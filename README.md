@@ -1,4 +1,4 @@
-# A6structure
+# Weather App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
 
@@ -26,27 +26,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## To use lodash npm i lodash
-##   npm i --save-dev @types/lodash
-
-## Install bootstrap and ngx-bootstrap for Modals etc.
-
-
-## First command 
-ng new --routing true del --style=scss
-
-## To Create project folder with Module 
-
-1st step
-ng g module --routing true auth/login 
-
-2nd step
-ng g component auth/login/login-layout --module=auth/login/login.module.ts
-
-3rd step
-ng g module --routing true auth/login/login-page 
-
-4th step
-ng g component --flat auth/login/login-page/login-page --module=auth/login/login-page/login-page.module.ts
 
 
