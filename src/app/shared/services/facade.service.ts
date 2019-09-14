@@ -15,7 +15,7 @@ export class FacadeService {
   }
   constructor(private injector: Injector) { }
 
-  getWeatherData(cityCode: number): Observable<any> {
-   return this.weatherService.getWeather(cityCode);
+  getWeatherData(city: string, countrycode: string): Observable<any> {
+   return this.weatherService.getWeather(city, countrycode);
   }
 }

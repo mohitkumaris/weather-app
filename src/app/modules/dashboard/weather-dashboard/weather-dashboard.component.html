@@ -1,18 +1,43 @@
-<p>
-  Weather App
-</p>
-<div class="some page-wrapper">
-  <div class="row" >
-     <div class="columns"   *ngFor="let item of result">
-        <div class='blue-column'>
-          {{item.date}}
-          {{item.temp_min}}
-          {{item.temp_max}}
-          {{item.humidity}}
-          {{item.weather}}
+<div class="container">
+    <h3 class="mt-5">
+        Weather Forecast App
+      </h3>
+      <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-weather" id="city"  (change)="showWeather($event)"
+             aria-describedby="emailHelp" placeholder="Enter City" >
+            <small id="cityHelp" class="form-text text-muted">Ex. New York, US, United States</small>
+            <small id="cityHelp" class="form-text text-muted">Ex. London, GB, United Kingdom</small>
+            <small id="cityHelp" class="form-text text-muted">Ex. New Delhi, IN, India</small>
           </div>
-     </div>
+          <div class="row no-gutters weather-row">
+            <div class="col-2" *ngFor="let item of result">
+                <div class="card card-width">
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.date}}</h5>
+                      <div ngSwitch="{{item.weather}}">
+                        <div *ngSwitchCase="'clear sky'"><img src="assets/images/clear-sky.svg" /></div>
+                        <div *ngSwitchCase="'scattered clouds'"><img src="assets/images/scaterred-cloud.svg" /></div>
+                        <div *ngSwitchCase="'light rain'"> <img src="assets/images/light-rain.svg" /></div>
+                        <div *ngSwitchCase="'overcast clouds'"><img src="assets/images/overcast-cloud.svg" /></div>
+                        <div *ngSwitchCase="'broken clouds'"> <img src="assets/images/broken-cloud.svg" /></div>
+                        <div *ngSwitchDefault>output2</div>
+                      </div>
 
-  </div>
+
+                      <p class="card-text">
+                        <strong>{{item.temp_max}}&deg;</strong>/<span>{{item.temp_min}}&deg;</span>
+                      </p>
+                      <div>humidity: <span>{{item.humidity}}</span></div>
+                      <div>weather: <span>{{item.weather}}</span></div>
+                    </div>
+                  </div>
+            </div>
+
+
+          </div>
+
+        </form>
+
 
 </div>

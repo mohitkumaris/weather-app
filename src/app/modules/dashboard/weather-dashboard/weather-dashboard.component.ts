@@ -9,37 +9,42 @@ import moment from 'moment';
 })
 export class WeatherDashboardComponent implements OnInit, OnDestroy {
 
+  textValue: string;
+  result: Subscription;
 
   constructor(private facadeService: FacadeService) {}
-  data: {
-    date: string,
-    temp_min: string,
-    temp_max: string,
-    humidity: string,
-    weather: string
-  };
 
-  result: Subscription;
-  ngOnInit() {
-   this.facadeService.getWeatherData(524901).subscribe((res) => {
 
-    this.result =  res.list.map(element => {
-     return { date: element.dt_txt,
-      temp_min: element.main.humidity,
-      temp_max: element.main.temp_max,
-      humidity :  element.main.temp_min,
-      weather: element.weather[0].description
-      };
-    }).filter((f)=>{
-     return f.date.includes('21:00:00');
-    });
-    console.log(this.result);
-   });
-  }
+  ngOnInit() {}
   ngOnDestroy(): void {
     this.result.unsubscribe();
   }
-   onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
+  showWeather(event) {
+   const cityName = event.target.value.split(',')[0];
+   const countryCode = event.target.value.split(',')[1];
+   console.log(cityName, countryCode.toUpperCase());
+   this.facadeService.getWeatherData(cityName, countryCode.toUpperCase()).subscribe((res) => {
+    console.log(res);
+    this.result =  res.list.map(element => {
+     return { date: element.dt_txt,
+      temp_min: element.main.temp_min,
+      temp_max: element.main.temp_max,
+      humidity :  element.main.humidity,
+      weather: element.weather[0].description
+      };
+    }).filter((f) => {
+     return f.date.includes('21:00:00');
+    }).map((r) => {
+      return {
+        date: moment(r.date).format('DD MMMM'),
+      temp_min: r.temp_min,
+      temp_max: r.temp_max,
+      humidity :  r.humidity,
+      weather: r.weather
+      };
+    });
+   });
 }
+
 }
+
