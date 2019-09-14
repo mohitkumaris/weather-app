@@ -30,6 +30,8 @@ export class WeatherDashboardComponent implements OnInit, OnDestroy {
       humidity :  element.main.temp_min,
       weather: element.weather[0].description
       };
+    }).filter((f)=>{
+     return f.date.includes('21:00:00');
     });
     console.log(this.result);
    });
@@ -37,4 +39,7 @@ export class WeatherDashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.result.unsubscribe();
   }
+   onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
 }
