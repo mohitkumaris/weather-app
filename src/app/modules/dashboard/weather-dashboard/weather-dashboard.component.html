@@ -9,7 +9,9 @@
             <small id="cityHelp" class="form-text text-muted">Ex. New York, US, United States</small>
             <small id="cityHelp" class="form-text text-muted">Ex. London, GB, United Kingdom</small>
             <small id="cityHelp" class="form-text text-muted">Ex. New Delhi, IN, India</small>
+            <small id="cityHelp" class="form-text text-muted">After enterting the Text, Press TAB to view data.</small>
           </div>
+
           <div class="row no-gutters weather-row">
             <div class="col-2" *ngFor="let item of result">
                 <div class="card card-width">
@@ -23,9 +25,7 @@
                         <div *ngSwitchCase="'broken clouds'"> <img src="assets/images/broken-cloud.svg" /></div>
                         <div *ngSwitchDefault>output2</div>
                       </div>
-
-
-                      <p class="card-text">
+                       <p class="card-text">
                         <strong>{{item.temp_max}}&deg;</strong>/<span>{{item.temp_min}}&deg;</span>
                       </p>
                       <div>humidity: <span>{{item.humidity}}</span></div>
@@ -34,8 +34,7 @@
                   </div>
             </div>
 
-
-          </div>
+        </div>
 
         </form>
 
