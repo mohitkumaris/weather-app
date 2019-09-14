@@ -16,7 +16,7 @@ const routes: Routes = [
         component: DashboardLayoutComponent,
         loadChildren: './weather-dashboard/weather-dashboard.module#WeatherDashboardModule',
         data: {
-          title: 'Sample'
+          title: 'Dashboard'
         }
       }
     ]

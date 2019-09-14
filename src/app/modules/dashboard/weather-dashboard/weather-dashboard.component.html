@@ -1,3 +1,18 @@
 <p>
   Weather App
 </p>
+<div class="some page-wrapper">
+  <div class="row" >
+     <div class="columns"   *ngFor="let item of result">
+        <div class='blue-column'>
+          {{item.date}}
+          {{item.temp_min}}
+          {{item.temp_max}}
+          {{item.humidity}}
+          {{item.weather}}
+          </div>
+     </div>
+
+  </div>
+
+</div>
