@@ -1,7 +1,5 @@
 export class AppConfig {
-  appAuthUrl = 'http://localhost:9090/';
-  appUrl = 'http://localhost:9090/api/';
-  resgisterUrl = 'USER/Register';
-  getCustomUrl = 'CREATEAUTH/getcustomproc';
+  weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?id=';
+  apiKey = '9d9ab6d4c676a11c5392a5173c0286b2';
 }
 
