@@ -13,7 +13,7 @@
           </div>
 
           <div class="row no-gutters weather-row">
-            <div class="col-2" *ngFor="let item of iResult">
+            <div class="col-2" *ngFor="let item of iResult$ | async">
                 <div class="card card-width">
                     <div class="card-body">
                       <h5 class="card-title">{{item.date}}</h5>
@@ -26,7 +26,7 @@
                         <div *ngSwitchDefault>output2</div>
                       </div>
                        <p class="card-text">
-                        <strong>{{item.temp_max}}&deg;</strong>/<span>{{item.temp_min}}&deg;</span>
+                        <strong>{{item.maxTemp}}&deg;</strong>/<span>{{item.minTemp}}&deg;</span>
                       </p>
                       <div>humidity: <span>{{item.humidity}}</span></div>
                       <div>weather: <span>{{item.weather}}</span></div>
