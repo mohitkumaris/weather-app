@@ -26,7 +26,7 @@ export class WeatherDashboardComponent  implements AfterViewInit {
   ngAfterViewInit() {
 
     fromEvent(this.input.nativeElement, 'keyup').debounceTime(100)
-    .distinctUntilChanged().subscribe(() => {
+    .subscribe(() => {
       this.iResult$ = this.facadeService.getWeatherData(this.iCity).pipe(
         catchError(err => {
           this.errorObject = err;
