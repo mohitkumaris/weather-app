@@ -9,8 +9,8 @@ export class WeatherService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  getWeather(city: string, countrycode: string): Observable<any> {
-       const url  = `${AppConfig.weatherUrl}${city},${countrycode}&units=metric&appid=${AppConfig.apiKey}`;
+  getWeather(city: string): Observable<any> {
+       const url  = `${AppConfig.weatherUrl}${city}&units=metric&appid=${AppConfig.apiKey}`;
      return this.httpClient.get(url)
      .pipe(shareReplay(1));
      /* to cache the request.

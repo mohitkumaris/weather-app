@@ -1,42 +1,57 @@
 <div class="container">
-    <h3 class="mt-5">
-        Weather Forecast App
-      </h3>
-      <form>
-          <div class="form-group">
-            <input type="text" class="form-control input-weather" id="city"  (change)="showWeather($event)"
-             aria-describedby="emailHelp" placeholder="Enter City" >
-            <small id="cityHelp" class="form-text text-muted">Ex. New York, US, United States</small>
-            <small id="cityHelp" class="form-text text-muted">Ex. London, GB, United Kingdom</small>
-            <small id="cityHelp" class="form-text text-muted">Ex. New Delhi, IN, India</small>
-            <small id="cityHelp" class="form-text text-muted">After enterting the Text, Press TAB to view data.</small>
-          </div>
+  <h3 class="mt-5">
+      Weather Forecast App
+    </h3>
 
-          <div class="row no-gutters weather-row">
-            <div class="col-2" *ngFor="let item of iResult$ | async">
-                <div class="card card-width">
-                    <div class="card-body">
-                      <h5 class="card-title">{{item.date}}</h5>
-                      <div ngSwitch="{{item.weather}}">
-                        <div *ngSwitchCase="'clear sky'"><img src="assets/images/clear-sky.svg" /></div>
-                        <div *ngSwitchCase="'scattered clouds'"><img src="assets/images/scaterred-cloud.svg" /></div>
-                        <div *ngSwitchCase="'light rain'"> <img src="assets/images/light-rain.svg" /></div>
-                        <div *ngSwitchCase="'overcast clouds'"><img src="assets/images/overcast-cloud.svg" /></div>
-                        <div *ngSwitchCase="'broken clouds'"> <img src="assets/images/broken-cloud.svg" /></div>
-                        <div *ngSwitchDefault>output2</div>
-                      </div>
-                       <p class="card-text">
-                        <strong>{{item.maxTemp}}&deg;</strong>/<span>{{item.minTemp}}&deg;</span>
-                      </p>
-                      <div>humidity: <span>{{item.humidity}}</span></div>
-                      <div>weather: <span>{{item.weather}}</span></div>
-                    </div>
-                  </div>
-            </div>
-
+        <div class="form-group">
+          <input type="text"  #input class="form-control input-weather" [(ngModel)]="iCity" id="city"
+           placeholder="Enter City" >
+          <small id="cityHelp" class="form-text text-muted">Ex. New York</small>
+          <small id="cityHelp" class="form-text text-muted">Ex. London</small>
         </div>
+        <div class="row no-gutters weather-row">
+            <ng-container *ngIf="iResult$ | async as data; else loadingOrError">
+                <div class="col-2" *ngFor="let item of iResult$ | async ">
+                    <div class="card card-width">
+                        <div class="card-body">
+                          <h5 class="card-title">{{item.date}}</h5>
+                          <div ngSwitch="{{item.weather}}">
+                            <div *ngSwitchCase="'clear sky'"><img src="assets/images/clear-sky.svg" /></div>
+                            <div *ngSwitchCase="'scattered clouds'"><img src="assets/images/scaterred-cloud.svg" /></div>
+                            <div *ngSwitchCase="'light rain'"> <img src="assets/images/light-rain.svg" /></div>
+                            <div *ngSwitchCase="'overcast clouds'"><img src="assets/images/overcast-cloud.svg" /></div>
+                            <div *ngSwitchCase="'broken clouds'"> <img src="assets/images/broken-cloud.svg" /></div>
+                            <div *ngSwitchDefault>output2</div>
+                          </div>
+                           <p class="card-text">
+                            <strong>{{item.maxTemp}}&deg;</strong>/<span>{{item.minTemp}}&deg;</span>
+                          </p>
+                          <div>humidity: <span>{{item.humidity}}</span></div>
+                          <div>weather: <span>{{item.weather}}</span></div>
+                        </div>
+                      </div>
+                </div>
+              </ng-container>
+              <ng-template #loadingOrError>
+                  <ng-container *ngIf="errorObject && iCity.length; else loading">
+                      <div class="col-12 text-center">
+                        <div class="alert alert-danger">
+                            City not found
+                        </div>
+                      </div>
+                    </ng-container>
 
-        </form>
+                    <ng-template #loading>
+
+                          <div class="spinner-border" role="status">
+                              <span class="sr-only">Loading...</span>
+                            </div>
+
+                    </ng-template>
+              </ng-template>
+      </div>
+
+
 
 
 </div>
