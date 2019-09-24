@@ -1,9 +1,4 @@
-
- interface Deserializable {
-  deserialize(input: any): this;
-}
-
-export class WeatherModel implements Deserializable {
+export class WeatherModel {
 
   date: string;
   minTemp: string;
@@ -11,10 +6,6 @@ export class WeatherModel implements Deserializable {
   humidity: string;
   weather: string;
 
-  deserialize(input: any): this {
-     Object.assign(this, input);
-     return this;
-  }
   constructor(date: string, minTemp: string, maxTemp: string, humidity: string, weather: string) {
        this.date = date;
        this.minTemp = minTemp;

@@ -8,4 +8,8 @@ export const  AppConfig  = {
   apiKey : '9d9ab6d4c676a11c5392a5173c0286b2',
   errorMessage: 'City not found!'
 };
+export const events = {
+  keyup: 'keyup'
+};
+
 

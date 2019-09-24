@@ -4,8 +4,8 @@ import {  Observable, throwError  } from 'rxjs';
 import { WeatherModel } from 'src/app/model/wether.model';
 import {fromEvent} from 'rxjs';
 import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import { catchError, debounce } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { events } from 'src/app/shared/app-config';
 
 @Component({
   selector: 'app-weather-dashboard',
@@ -25,7 +25,7 @@ export class WeatherDashboardComponent  implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    fromEvent(this.input.nativeElement, 'keyup').debounceTime(100)
+    fromEvent(this.input.nativeElement, events.keyup ).debounceTime(100)
     .subscribe(() => {
       this.iResult$ = this.facadeService.getWeatherData(this.iCity).pipe(
         catchError(err => {
