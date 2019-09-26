@@ -4,8 +4,7 @@
     </h3>
 
         <div class="form-group">
-          <input type="text"  #input class="form-control input-weather" [(ngModel)]="iCity" id="city"
-           placeholder="Enter City" >
+          <app-input (changeEvent)="showWeather(CData=$event)"></app-input>
           <small id="cityHelp" class="form-text text-muted">Ex. New York</small>
           <small id="cityHelp" class="form-text text-muted">Ex. London</small>
         </div>
@@ -33,7 +32,7 @@
                 </div>
               </ng-container>
               <ng-template #loadingOrError>
-                  <ng-container *ngIf="errorObject && iCity.length; else loading">
+                  <ng-container *ngIf="errorObject && CData.length; else loading">
                       <div class="col-12 text-center">
                         <div class="alert alert-danger">
                             {{errorObject}}

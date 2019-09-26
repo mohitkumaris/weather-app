@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import {DashboardTablesRoutingModule} from './weather-dashboard-routing.module';
 import {WeatherDashboardComponent} from './weather-dashboard.component';
+import { InputComponent } from 'src/app/components/input/input.component';
 
 
 
@@ -13,7 +14,7 @@ import {WeatherDashboardComponent} from './weather-dashboard.component';
     DashboardTablesRoutingModule,
     FormsModule
   ],
-  declarations: [WeatherDashboardComponent]
+  declarations: [WeatherDashboardComponent, InputComponent]
 })
 export class WeatherDashboardModule {
 }

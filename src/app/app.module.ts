@@ -8,7 +8,8 @@ import { HttpErrorInterceptor } from './shared/errorhanding/httperrorinterceptor
 
 @NgModule({
   declarations: [
-    AppComponent],
+    AppComponent
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
