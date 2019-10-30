@@ -12,7 +12,7 @@ export class WeatherService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  getWeather(city: string): Observable<any> {
+  getWeather(city: string): Observable<WeatherModel[]> {
        const url  = `${AppConfig.weatherUrl}${city}&units=metric&appid=${AppConfig.apiKey}`;
      return this.httpClient.get(url)
      .pipe(  map((res: any) => res.list.filter(f => f.dt_txt.includes('21:00:00'))),
